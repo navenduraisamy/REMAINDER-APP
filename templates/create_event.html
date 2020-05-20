@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Create event{% endblock %}
+{% block content %}
+<div class="container" style="padding:50px">
+  <h2 style="padding-bottom:20px">Create Event</h2>
+  <form action="#" method="post">
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="eventname">Event Name</label>
+        <input class="form-control" type="text" name="eventname" id="eventname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="eventdesc">Description</label>
+        <textarea class="form-control" name="eventdesc" rows="5" cols="80"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="eventdate">Deadline</label>
+        <input class="form-control" type="date" name="eventdate" id="eventdate" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Event</button>
+    <a href="{{ url_for('users') }}"  class="btn btn-secondary active" role="button" aria-pressed="true">Cancel</a>
+
+</form>
+</div>
+{% endblock %}

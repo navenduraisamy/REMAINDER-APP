@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  {% with messages =get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        {% if msg == "Invalid email. Try again." or msg == "Invalid password. Try again." %}
+          <div class="alert alert-danger" role="alert" style="margin:20px 50px">
+            {{msg}}
+          </div>
+        {% else: %}
+        <div class="alert alert-success" role="alert" style="margin:20px 50px">
+          {{msg}}
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+<div class="container" style="padding-top:50px">
+  <h2 style="padding-bottom:20px">Log In</h2>
+  <form action="#" method="post">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row">
+      <div class="form-group col-lg-4" style="padding-top:10px">
+        Being new here? <a href="{{ url_for('signup') }}">Signup</a>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+{% with messages =get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="alert alert-success" role="alert" style="margin:20px">
+        {{msg}}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<a href="{{ url_for('logout') }}" style="margin-left:20px; margin-top:20px" class="btn btn-secondary active" role="button" aria-pressed="true">Logout</a>
+<a href="{{ url_for('addevent') }}" style="margin-top:20px" class="btn btn-secondary active" role="button" aria-pressed="true">Add Event</a>
+<h3 style="margin:25px">Forthcoming Events</h3>
+{% if events1==None: %}
+  <div class="card" style="margin:0px 20px">
+  <div class="card-body">
+    <center>You have no forthcoming event, add one by clicking <a href="{{ url_for('addevent') }}">Add event</a></center>
+
+  </div>
+  </div>
+{% else: %}
+  <div class="my-class" style="display:grid; grid-template-columns: repeat(2,1fr);  margin-right:20px; margin-bottom:40px">
+  {% for eve in events1 %}
+    <div class="card" style="margin-top:20px; margin-left:20px;">
+      <h5 class="card-header">{{ eve[2] }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">{{ eve[1] }}</h5>
+        <p class="card-text">{{ eve[3] }}</p>
+        <form action="#" method="POST">
+          <input type="hidden" name="event_id" value="{{ eve[4] }}">
+          <button type="submit" class="btn btn-primary">Delete Event</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+<h3 style="margin:25px">Pending Events</h3>
+{% if events2==None: %}
+  <div class="card" style="margin:0px 20px">
+  <div class="card-body">
+    <center>Great you have no pending events!</center>
+  </div>
+  </div>
+{% else: %}
+  <div class="my-class" style="display:grid; grid-template-columns: repeat(2,1fr);  margin-right:20px; margin-bottom:20px">
+  {%for eve in events2 %}
+    <div class="card" style="margin-left:20px; margin-top:20px">
+      <h5 class="card-header">{{ eve[2] }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">{{ eve[1] }}</h5>
+        <p class="card-text">{{ eve[3] }}</p>
+        <form action="#" method="POST">
+          <input type="hidden" name="event_id" value="{{ eve[4] }}">
+          <button type="submit" class="btn btn-primary">Delete Event</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

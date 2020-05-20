@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title%}Sign Up{% endblock %}
+{% block content %}
+{% with messages =get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-danger" role="alert" style="margin:20px 50px">
+      {{msg}}
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<div class="container" style="padding:50px">
+  <h2 style="padding-bottom:20px">Register</h2>
+  <form action="#" method="post">
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="firstname">Firstname</label>
+        <input class="form-control" type="text" name="firstname" id="firstname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="lastname">Lastname</label>
+        <input class="form-control" type="text" name="lastname" id="lastname" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" name="email" id="email" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-5">
+        <label for="password2">Confirm Password</label>
+        <input class="form-control" type="password" name="password2" id="password2" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row">
+      <div class="form-group col-lg-5" style="padding-top:10px">
+        Have an account? <a href="{{ url_for('home') }}">Login</a>
+      </div>
+    </div>
+</form>
+</div>
+{% endblock %}
