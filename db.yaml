@@ -1,4 +1,4 @@
-mysql_host: 'bjzqooz072vq5scpkieb-mysql.services.clever-cloud.com'
-mysql_user: 'u4kg26fnp0zatjm3'
-mysql_password: 'HQ9uMgRpkfCgJ2vrasyo'
-mysql_db: 'bjzqooz072vq5scpkieb'
+mysql_host: 'localhost'
+mysql_user: 'root'
+mysql_password: '5859'
+mysql_db: 'cms'
